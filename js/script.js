@@ -1,6 +1,6 @@
 // Diese Elemente will ich immer wieder verwenden
 // querySelector() -> #gibt für id und . für class
-const Staedte = document.querySelector('#stadt_suche');
+const staedte = document.querySelector('#stadt_suche');
 const sonnenaufgang = document.querySelector('#sonnenaufgang');
 const sonnenstand = document.querySelector('#sonnenstand');
 const sonnenuntergang = document.querySelector('#sonnenuntergang');
