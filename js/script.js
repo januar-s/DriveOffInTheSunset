@@ -43,3 +43,27 @@ async function fetchData(url) {
 }
 
 fetchData(url);
+
+document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById('slider');
+    const sonne = document.getElementById('sonne');
+    const sonnenbogen = document.getElementById('sonnenbogen');
+
+    const radius = sonnenbogen.offsetWidth / 2; // Radius des Kreises berechnen
+
+    slider.addEventListener('input', function() {
+        const angle = parseInt(slider.value) - 180;
+        moveSonne(angle);
+    });
+
+    function moveSonne(angle) {
+        const radians = angle * Math.PI / 180; // Umrechnung von Grad in Radian
+        const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians) )- 25;
+        const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians) )+ 100;
+        sonne.style.left = `${x}px`;
+        sonne.style.top = `${y}px`;
+    }
+
+    // Initialposition
+    moveCircle(0);
+});

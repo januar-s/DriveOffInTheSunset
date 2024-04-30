@@ -2,9 +2,34 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 body{
     background-color: rgb(233, 170, 107);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#sonnenbogen {
+    width: 500px;
+    height: 250px;
+    border-radius: 250px 250px 0 0;
+    border-width: 2px;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: none;
+}
+
+#sonne {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: yellow;
+    position: relative;
 }
