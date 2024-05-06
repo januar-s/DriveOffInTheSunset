@@ -66,3 +66,100 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialposition
     moveSonne(180);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+
+        if (data.results) {
+            document.querySelector('#sunriseTime').textContent = `Sonnenaufgang: ${data.results.sunrise}`;
+            document.querySelector('#sunsetTime').textContent = `Sonnenuntergang: ${data.results.sunset}`;
+        }
+
+        return data;  // Diese Zeile bleibt innerhalb des try-Blocks
+    } catch (error) {
+        console.error(error);
+    }
+}
+

@@ -33,3 +33,20 @@ main {
     background-color: yellow;
     position: relative;
 }
+
+#container {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+
+}
+
+#sunriseTime, #sunsetTime {
+    color: rgb(14, 2, 2); /* Weiße Schrift für bessere Lesbarkeit */
+    font-size: 16px; /* Schriftgröße anpassen */
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+
+
