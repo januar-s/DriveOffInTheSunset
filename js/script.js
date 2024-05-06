@@ -4,7 +4,8 @@ const staedte = document.querySelector('#stadt_suche');
 const sonnenaufgang = document.querySelector('#sonnenaufgang');
 const sonnenstand = document.querySelector('#sonnenstand');
 const sonnenuntergang = document.querySelector('#sonnenuntergang');
-let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&';
+let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich';
+let formattedUrl = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
 
 // // Initalisierung
 // init();
@@ -35,6 +36,7 @@ async function fetchData(url) {
         let response = await fetch(url);
         let data = await response.json();
         console.log(data);
+        console.log(data.results.day_length);
         return data;
     }
     catch (error) {
@@ -43,26 +45,37 @@ async function fetchData(url) {
 }
 fetchData(url);
 
-document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.getElementById('slider');
+function position() {
     const sonne = document.getElementById('sonne');
     const sonnenbogen = document.getElementById('sonnenbogen');
 
     const radius = sonnenbogen.offsetWidth / 2; // Radius des Kreises berechnen
 
-    slider.addEventListener('input', function() {
-        const angle = parseInt(slider.value) - 180;
-        moveSonne(angle);
-    });
+    // Funktion, um den Sonnenstand von der API zu erhalten
+        fetch(formattedUrl)
+            .then(response => response.json())
+            .then(data => {
+                const sunrise = new Date(data.results.sunrise);
+                const sunset = new Date(data.results.sunset);
+                const now = new Date();
+                
+                const totalMinutes = (sunset - sunrise) / (1000 * 60); // Gesamte Minuten zwischen Sonnenaufgang und Sonnenuntergang
+                const elapsedMinutes = (now - sunrise) / (1000 * 60); // Vergangene Minuten seit Sonnenaufgang
+                const percentage = (elapsedMinutes / totalMinutes) * 100; // Prozentsatz des vergangenen Tages
+                
+                const angle = (percentage * 1.8) - 180; // Umrechnung in Grad (360 Grad / 200% = 1.8 Grad pro %)
+                moveSonne(angle);
+            })
+            .catch(error => console.error('Error fetching sun position:', error));
 
+
+    // Funktion, um die Sonne zu bewegen
     function moveSonne(angle) {
         const radians = angle * Math.PI / 180; // Umrechnung von Grad in Radian
         const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians) )- 25;
         const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians) )+ 100;
         sonne.style.left = `${x}px`;
         sonne.style.top = `${y}px`;
-    }
-
-    // Initialposition
-    moveSonne(180);
-});
+    } moveSonne(180);
+}
+position();
