@@ -88,13 +88,16 @@ async function fetchData(url) {
         console.log(data);
 
         if (data.results) {
-            document.querySelector('#sunriseTime').textContent = `Sonnenaufgang: ${data.results.sunrise}`;
-            document.querySelector('#sunsetTime').textContent = `Sonnenuntergang: ${data.results.sunset}`;
+            document.querySelector('#sunriseTime').textContent = `${data.results.sunrise}`;
+            document.querySelector('#sunsetTime').textContent = `${data.results.sunset}`;
+            document.querySelector('#currentTime').textContent = moment().format('LT');
         }
 
         return data;  // Diese Zeile bleibt innerhalb des try-Blocks
     } catch (error) {
         console.error(error);
     }
+
 }
+
 
