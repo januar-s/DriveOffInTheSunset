@@ -4,7 +4,7 @@ const staedte = document.querySelector('#stadt_suche');
 const sonnenaufgang = document.querySelector('#sonnenaufgang');
 const sonnenstand = document.querySelector('#sonnenstand');
 const sonnenuntergang = document.querySelector('#sonnenuntergang');
-let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today';
+let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&';
 
 // // Initalisierung
 // init();
@@ -41,7 +41,6 @@ async function fetchData(url) {
         console.log(error);
     }
 }
-
 fetchData(url);
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -65,5 +64,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Initialposition
-    moveCircle(0);
+    moveSonne(180);
 });
