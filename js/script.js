@@ -1,8 +1,5 @@
 // Diese Elemente will ich immer wieder verwenden
 // querySelector() -> #gibt für id und . für class
-const sonnenaufgang = document.querySelector('#sonnenaufgang');
-const sonnenstand = document.querySelector('#sonnenstand');
-const sonnenuntergang = document.querySelector('#sonnenuntergang');
 const body = document.querySelector('body');
 let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich';
 let formattedUrl = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
@@ -14,7 +11,6 @@ async function fetchData(url) {
         let response = await fetch(url);
         let data = await response.json();
         console.log(data);
-        console.log(data.results.day_length);
 
         if (data.results) {
             document.querySelector('#sunriseTime').textContent = `${data.results.sunrise}`;
@@ -68,9 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
     select.addEventListener('change', async function () {
         let stadt = staedte.find(stadt => stadt.name === select.value);
         let url = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}`;
+        let formattedUrl = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}&formatted=0`;
         await fetchData(url);
         document.querySelector('#currentTime').textContent = moment().tz(`${stadt.tzid}`).format('LT');
-        console.log(stadt.tzid);
+        position();
+
+        setInterval(position, 60000)
     });
 });
 
@@ -86,7 +85,7 @@ function position() {
             .then(data => {
                 const sunrise = new Date(data.results.sunrise);
                 const sunset = new Date(data.results.sunset);
-                const now = new Date();
+                const now = new moment().tz('America/Los_Angeles');
                 
                 const totalMinutes = (sunset - sunrise) / (1000 * 60); // Gesamte Minuten zwischen Sonnenaufgang und Sonnenuntergang
                 const elapsedMinutes = (now - sunrise) / (1000 * 60); // Vergangene Minuten seit Sonnenaufgang
