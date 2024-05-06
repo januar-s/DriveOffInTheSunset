@@ -15,6 +15,11 @@ main {
     flex-direction: column;
 }
 
+p {
+    font-family: bd-orange-variable, sans-serif;
+    font-variation-settings: "wght" 800;
+}
+
 #sonnenbogen {
     width: 500px;
     height: 250px;
@@ -38,15 +43,18 @@ main {
     display: flex;
     flex-direction: row;
     align-items: end;
-
+    padding-top: 5vw;
 }
 
 #sunriseTime, #sunsetTime {
     color: rgb(14, 2, 2); /* Weiße Schrift für bessere Lesbarkeit */
-    font-size: 16px; /* Schriftgröße anpassen */
+    font-size: 32px; /* Schriftgröße anpassen */
     padding-left: 5vw;
     padding-right: 5vw;
 }
 
-
+#currentTime {
+    color: rgb(14, 2, 2); /* Weiße Schrift für bessere Lesbarkeit */
+    font-size: 64px; /* Schriftgröße anpassen */
+}
 
