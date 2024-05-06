@@ -76,90 +76,9 @@ function position() {
         const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians) )+ 100;
         sonne.style.left = `${x}px`;
         sonne.style.top = `${y}px`;
-<<<<<<< HEAD
-    }
-
-    // Initialposition
-    moveSonne(180);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    } moveSonne(180);
+}
+position();
 
 
 async function fetchData(url) {
@@ -179,8 +98,3 @@ async function fetchData(url) {
     }
 }
 
-=======
-    } moveSonne(180);
-}
-position();
->>>>>>> 27ffbed5aaff1918cd3c443272fce2a861a2cbfa
