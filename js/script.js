@@ -121,7 +121,7 @@ function position(formattedUrl) {
 
     function dawn(angle) {
         angle = angle + 180;
-        if (angle < 10 || angle > 350) {
+        if (angle < 10 && angle > -10) {
             body.style.background = 'linear-gradient(180deg, #FFEB3B 0%, #FFEB3B 50%, #FFC107 100%)';
             body.classList = '';
             sonne.style.display = 'block';
