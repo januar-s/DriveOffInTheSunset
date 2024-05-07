@@ -1,7 +1,7 @@
 // Diese Elemente will ich immer wieder verwenden
 // querySelector() -> #gibt für id und . für class
 const body = document.querySelector('body');
-let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich';
+let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
 let formattedUrl = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
 
 
@@ -12,9 +12,12 @@ async function fetchData(url) {
         let data = await response.json();
         console.log(data);
 
+        let sonnenaufgang = moment(data.results.sunrise).tz('Europe/Zurich').format('LT');
+        let sonnenuntergang = moment(data.results.sunset).tz('Europe/Zurich').format('LT');
+
         if (data.results) {
-            document.querySelector('#sunriseTime').textContent = `${data.results.sunrise}`;
-            document.querySelector('#sunsetTime').textContent = `${data.results.sunset}`;
+            document.querySelector('#sunriseTime').textContent = `${sonnenaufgang}`;
+            document.querySelector('#sunsetTime').textContent = `${sonnenuntergang}`;
             document.querySelector('#currentTime').textContent = moment().tz('Europe/Zurich').format('LT');
         }
 
@@ -49,7 +52,7 @@ let staedte = [{
     name: 'kairo',
     lat: 30.033333,
     lng: 31.233334,
-    tzid: 'Africa/Cairo'
+    tzid: 'Africa/Kampala'
 },
 {
     name: 'rio',
@@ -63,20 +66,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     select.addEventListener('change', async function () {
         let stadt = staedte.find(stadt => stadt.name === select.value);
-        let url = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}`;
+        let url = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}&formatted=0`;
         let formattedUrl = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}&formatted=0`;
         await fetchData(url);
-        updateCurrentTime(); // Rufen Sie diese Funktion auf, um die aktuelle Zeit sofort zu setzen
-        setInterval(updateCurrentTime, 60000);
-        // document.querySelector('#currentTime').textContent = moment().tz(`${stadt.tzid}`).format('LT');
-        position();
 
-        updateCurrentTime(); 
-        setInterval(updateCurrentTime, 60000); 
-        // setInterval(position, 60000)
+        position();
     });
 });
+
+updateCurrentTime(); // Rufen Sie diese Funktion auf, um die aktuelle Zeit sofort zu setzen
+setInterval(updateCurrentTime, 1000);
+
 function updateCurrentTime() {
+    const select = document.querySelector('#stadt_suche');
     const stadt = staedte.find(stadt => stadt.name === select.value);
     document.querySelector('#currentTime').textContent = moment().tz(stadt.tzid).format('LT');
 }
@@ -100,7 +102,7 @@ function position() {
                 const percentage = (elapsedMinutes / totalMinutes) * 100; // Prozentsatz des vergangenen Tages
                 
                 const angle = (percentage * 1.8) - 180; // Umrechnung in Grad (360 Grad / 200% = 1.8 Grad pro %)
-                console.log(angle);
+                console.log(angle+180);
                 moveSonne(angle);
                 dawn(angle);
             })
@@ -111,16 +113,17 @@ function position() {
     function moveSonne(angle) {
         const radians = angle * Math.PI / 180; // Umrechnung von Grad in Radian
         const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians) )- 25;
-        const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians) )+ 100;
+        const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians) )+ 85;
         sonne.style.left = `${x}px`;
         sonne.style.top = `${y}px`;
     } moveSonne(180);
 
     function dawn(angle) {
-        if (angle + 180 < 10 || angle + 180 > 170) {
-            body.style.background = 'linear-gradient(180deg, #FFC107 0%, #FFC107 50%, #FFEB3B 50%, #FFEB3B 100%)';
-        } else {
+        angle = angle + 180;
+        if (angle < 10 || angle > 170) {
             body.style.background = 'linear-gradient(180deg, #FFC107 0%, #FFEB3B 50%, #FFEB3B 100%)';
+        } else {
+            body.style.background = 'linear-gradient(180deg, #0669BF 0%, #5EBAF2 50%, #99D9F2 100%)';
         }        
     };
 }
