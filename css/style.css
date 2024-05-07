@@ -4,6 +4,18 @@
     box-sizing: border-box;
 }
 
+:root {
+    --day-color: #282828;
+    --night-color: #F0F8FF;
+    --font-color: var(--day-color);
+    --alternative-color: var(--night-color);
+}
+
+body.night {
+    --font-color: var(--night-color);
+    --alternative-color: var(--day-color);
+}
+
 p {
     font-family: bd-orange-variable, sans-serif;
     font-variation-settings: "wght" 800;
@@ -26,7 +38,7 @@ h1 {
     font-family: bd-orange-variable, sans-serif;
     font-variation-settings: "wght" 600;
     font-size: 80px;
-    color: rgb(14, 2, 2);
+    color: var(--font-color);
     /* Weiße Schrift für bessere Lesbarkeit */
     justify-content: center;
 }
@@ -40,7 +52,7 @@ h1 {
 
 label[for="stadt"] {
     font-size: 30px;
-    color: rgb(0, 0, 0);
+    color: var(--font-color);
     font-weight: bold;
     margin-bottom: 10px;
     font-family: bd-orange-variable, sans-serif;
@@ -49,8 +61,8 @@ label[for="stadt"] {
 
 #stadt_suche {
     font-size: 25px;
-    color: white;
-    background-color: black;
+    color: var(--alternative-color);
+    background-color: var(--font-color);
     width: 90%;
     padding: 10px;
     border-radius: 5px;
@@ -61,11 +73,12 @@ label[for="stadt"] {
   
 }
 
-#stadt_suche option {
+option {
+    font-size: 20px;
+    color: var(--alternative-color);
     font-family: bd-orange-variable, sans-serif;
     font-variation-settings: "wght" 600;
-    font-size: 25px;
-    color: white; 
+    align-items: center;
 }
 
 img {
@@ -80,6 +93,7 @@ img {
     border: 2px solid;
     border-bottom: none;
     position: relative;
+    border-color: var(--font-color);
     
     /* border-width: 2px;
     border-top-style: solid;
@@ -115,7 +129,7 @@ img {
 
 #sunriseTime,
 #sunsetTime {
-    color: rgb(14, 2, 2);
+    color: var(--font-color);
     /* Weiße Schrift für bessere Lesbarkeit */
     font-size: 32px;
     /* Schriftgröße anpassen */
@@ -124,7 +138,7 @@ img {
 }
 
 #currentTime {
-    color: rgb(14, 2, 2);
+    color: var(--font-color);
     /* Weiße Schrift für bessere Lesbarkeit */
     font-size: 64px;
     /* Schriftgröße anpassen */

@@ -3,22 +3,23 @@
 const body = document.querySelector('body');
 let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
 let formattedUrl = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
+let tzid = 'Europe/Zurich';
 
 
 // Daten aus einer API holen
-async function fetchData(url) {
+async function fetchData(url, tzid) {
     try {
         let response = await fetch(url);
         let data = await response.json();
         console.log(data);
 
-        let sonnenaufgang = moment(data.results.sunrise).tz('Europe/Zurich').format('LT');
-        let sonnenuntergang = moment(data.results.sunset).tz('Europe/Zurich').format('LT');
+        // let sonnenaufgang = moment(data.results.sunrise).format('LT');
+        // let sonnenuntergang = moment(data.results.sunset).format('LT');
 
         if (data.results) {
-            document.querySelector('#sunriseTime').textContent = `${sonnenaufgang}`;
-            document.querySelector('#sunsetTime').textContent = `${sonnenuntergang}`;
-            document.querySelector('#currentTime').textContent = moment().tz('Europe/Zurich').format('LT');
+            document.querySelector('#sunriseTime').textContent = `${data.results.sunrise}`.slice(11, 16);
+            document.querySelector('#sunsetTime').textContent = `${data.results.sunset}`.slice(11, 16);
+            document.querySelector('#currentTime').textContent = moment().tz(`${tzid}`).format('HH:mm');
         }
 
         return data;
@@ -28,7 +29,7 @@ async function fetchData(url) {
         console.log(error);
     }
 }
-fetchData(url);
+fetchData(url,tzid);
 
 let staedte = [{
     name: 'bern',
@@ -68,9 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let stadt = staedte.find(stadt => stadt.name === select.value);
         let url = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}&formatted=0`;
         let formattedUrl = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}&formatted=0`;
-        await fetchData(url);
-
-        position();
+        let tzid = stadt.tzid;
+        await fetchData(url,tzid);
+        position(formattedUrl);
     });
 });
 
@@ -80,10 +81,10 @@ setInterval(updateCurrentTime, 1000);
 function updateCurrentTime() {
     const select = document.querySelector('#stadt_suche');
     const stadt = staedte.find(stadt => stadt.name === select.value);
-    document.querySelector('#currentTime').textContent = moment().tz(stadt.tzid).format('LT');
+    document.querySelector('#currentTime').textContent = moment().tz(`${stadt.tzid}`).format('HH:mm');
 }
 
-function position() {
+function position(formattedUrl) {
     const sonne = document.getElementById('sonne');
     const sonnenbogen = document.getElementById('sonnenbogen');
 
@@ -95,7 +96,7 @@ function position() {
             .then(data => {
                 const sunrise = new Date(data.results.sunrise);
                 const sunset = new Date(data.results.sunset);
-                const now = new moment().tz('America/Los_Angeles');
+                const now = new moment().tz('Europe/Zurich');
                 
                 const totalMinutes = (sunset - sunrise) / (1000 * 60); // Gesamte Minuten zwischen Sonnenaufgang und Sonnenuntergang
                 const elapsedMinutes = (now - sunrise) / (1000 * 60); // Vergangene Minuten seit Sonnenaufgang
@@ -112,7 +113,7 @@ function position() {
     // Funktion, um die Sonne zu bewegen
     function moveSonne(angle) {
         const radians = angle * Math.PI / 180; // Umrechnung von Grad in Radian
-        const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians) )- 25;
+        const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians) )- 40;
         const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians) )+ 85;
         sonne.style.left = `${x}px`;
         sonne.style.top = `${y}px`;
@@ -120,11 +121,27 @@ function position() {
 
     function dawn(angle) {
         angle = angle + 180;
-        if (angle < 10 || angle > 170) {
-            body.style.background = 'linear-gradient(180deg, #FFC107 0%, #FFEB3B 50%, #FFEB3B 100%)';
-        } else {
+        if (angle < 10 || angle > 350) {
+            body.style.background = 'linear-gradient(180deg, #FFEB3B 0%, #FFEB3B 50%, #FFC107 100%)';
+            body.classList = '';
+            sonne.style.display = 'block';
+        } 
+        else if (angle > 170 && angle < 190) {
+            body.style.background = 'linear-gradient(180deg, #E8E172 0%, #FFA338 50%, #E83331 100%)';
+            body.classList = '';
+            sonne.style.display = 'block';
+        }
+        else if (angle > 10 && angle < 170){
             body.style.background = 'linear-gradient(180deg, #0669BF 0%, #5EBAF2 50%, #99D9F2 100%)';
-        }        
+            body.classList = '';
+            sonne.style.display = 'block';
+        }
+        else {
+            body.style.background = 'linear-gradient(180deg, #02070D 0%, #122A40 50%, #193B59 100%)';
+            body.classList = '';
+            body.classList.add('night');
+            sonne.style.display = 'none';
+        }
     };
 }
-position();
+position(formattedUrl);
