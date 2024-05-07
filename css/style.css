@@ -4,15 +4,57 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color: rgb(233, 170, 107);
-}
-
 main {
     display: flex;
     align-items: center;
     height: 100vh;
     flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 3vw;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vw;
+}
+
+h1 {
+    font-family: bd-orange-variable, sans-serif;
+    font-variation-settings: "wght" 600;
+    font-size: 80px;
+    color: rgb(14, 2, 2);
+    /* Weiße Schrift für bessere Lesbarkeit */
+    justify-content: center;
+}
+
+label[for="stadt"] {
+
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: bd-orange-variable, sans-serif;
+    font-variation-settings: "wght" 600;
+}
+
+#stadt_suche {
+    font-size: 25px;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 20%;
+    box-sizing: border-box;
+    font-family: bd-orange-variable, sans-serif;
+    font-variation-settings: "wght" 600;
+    text-align-last: center; 
+  
 }
 
 p {
@@ -24,37 +66,49 @@ p {
     width: 500px;
     height: 250px;
     border-radius: 250px 250px 0 0;
-    border-width: 2px;
+    border: 2px solid;
+    border-bottom: none;
+    position: relative;
+    
+    /* border-width: 2px;
     border-top-style: solid;
     border-right-style: solid;
     border-left-style: solid;
-    border-bottom-style: none;
+    border-bottom-style: none; */
 }
 
 #sonne {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: yellow;
-    position: relative;
+    position: absolute;
+    bottom: -40px; /* Halb die Höhe der Sonne, um sie mittig am Rand zu positionieren */
+    left: 50%; /* Setzt die linke Kante der Sonne in die Mitte des Sonnenbogens */
+    transform: translateX(-50%); /* Verschiebt die Sonne zurück um ihre eigene halbe Breite */
+    /* position: relative; */
 }
 
 #container {
     display: flex;
     flex-direction: row;
     align-items: end;
-    padding-top: 5vw;
+    padding-top: 7vw;
 }
 
-#sunriseTime, #sunsetTime {
-    color: rgb(14, 2, 2); /* Weiße Schrift für bessere Lesbarkeit */
-    font-size: 32px; /* Schriftgröße anpassen */
+#sunriseTime,
+#sunsetTime {
+    color: rgb(14, 2, 2);
+    /* Weiße Schrift für bessere Lesbarkeit */
+    font-size: 32px;
+    /* Schriftgröße anpassen */
     padding-left: 5vw;
     padding-right: 5vw;
 }
 
 #currentTime {
-    color: rgb(14, 2, 2); /* Weiße Schrift für bessere Lesbarkeit */
-    font-size: 64px; /* Schriftgröße anpassen */
+    color: rgb(14, 2, 2);
+    /* Weiße Schrift für bessere Lesbarkeit */
+    font-size: 64px;
+    /* Schriftgröße anpassen */
 }
-

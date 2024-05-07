@@ -66,12 +66,20 @@ document.addEventListener('DOMContentLoaded', function () {
         let url = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}`;
         let formattedUrl = `https://api.sunrise-sunset.org/json?lat=${stadt.lat}&lng=${stadt.lng}&date=today&tzid=${stadt.tzid}&formatted=0`;
         await fetchData(url);
-        document.querySelector('#currentTime').textContent = moment().tz(`${stadt.tzid}`).format('LT');
+        updateCurrentTime(); // Rufen Sie diese Funktion auf, um die aktuelle Zeit sofort zu setzen
+        setInterval(updateCurrentTime, 60000);
+        // document.querySelector('#currentTime').textContent = moment().tz(`${stadt.tzid}`).format('LT');
         position();
 
-        setInterval(position, 60000)
+        updateCurrentTime(); 
+        setInterval(updateCurrentTime, 60000); 
+        // setInterval(position, 60000)
     });
 });
+function updateCurrentTime() {
+    const stadt = staedte.find(stadt => stadt.name === select.value);
+    document.querySelector('#currentTime').textContent = moment().tz(stadt.tzid).format('LT');
+}
 
 function position() {
     const sonne = document.getElementById('sonne');

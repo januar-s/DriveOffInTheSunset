@@ -12,12 +12,14 @@
 </head>
 <body>
     <header>
-
+<h1>Global Sun Tracker</h1>
     </header>
     <main>
+       <div id="menu"> 
         <label for="stadt">Wähle deine Stadt:</label>
+         <select name="stadt" id="stadt_suche">
+        </div>
 
-        <select name="stadt" id="stadt_suche">
             <option value="bern">Bern</option>
             <option value="losangeles">Los Angeles</option>
             <option value="tokio">Tokio</option>
@@ -27,7 +29,7 @@
         <div id="container"> 
             <p id="sunriseTime">...</p>
             <div id="sonnenbogen">
-                <div id="sonne"></div>
+            <div id="sonne"></div>
             </div>
             <p id="sunsetTime">...</p>
         </div>
