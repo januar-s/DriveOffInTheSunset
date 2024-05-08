@@ -74,10 +74,9 @@ label[for="stadt"] {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    font-family: bd-orange-variable, sans-serif;
+    /* font-family: bd-orange-variable, sans-serif; */
     font-variation-settings: "wght" 600;
     text-align-last: center; 
-  
 }
 
 img {
@@ -186,10 +185,5 @@ img {
     #sonnenbogen {
         width: 50vw;
         height: 25vw;
-        border-radius: 250px 250px 0 0;
-        border: 2px solid;
-        border-bottom: none;
-        position: relative;
-        border-color: var(--font-color);
     }
 }
