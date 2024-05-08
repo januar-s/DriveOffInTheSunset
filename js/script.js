@@ -14,8 +14,8 @@ async function fetchData(url, tzid) {
         console.log(data);
 
         if (data.results) {
-            document.querySelector('#sunriseTime').textContent = `${data.results.sunrise}`.slice(11, 16);
-            document.querySelector('#sunsetTime').textContent = `${data.results.sunset}`.slice(11, 16);
+            document.querySelector('#zeitLinks').textContent = `${data.results.sunrise}`.slice(11, 16);
+            document.querySelector('#zeitRechts').textContent = `${data.results.sunset}`.slice(11, 16);
             document.querySelector('#currentTime').textContent = moment().tz(`${tzid}`).format('HH:mm');
         }
 
@@ -135,6 +135,7 @@ async function angleSunAndRadius(formattedUrl) {
             const angleSun = (percentage * 1.8) - 180; // Umrechnung in Grad (360 Grad / 200% = 1.8 Grad pro %)
             console.log(angleSun + 180);
             moveSonne(angleSun, radius);
+            moveMond(angleSun, radius)
             visualChange(angleSun);
         }
     }

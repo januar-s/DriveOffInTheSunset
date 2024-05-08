@@ -135,8 +135,8 @@ img {
     padding-top: 7vw;
 }
 
-#sunriseTime,
-#sunsetTime {
+#zeitLinks,
+#zeitRechts {
     color: var(--font-color);
     /* Weiße Schrift für bessere Lesbarkeit */
     font-size: 32px;
@@ -174,8 +174,8 @@ img {
         padding-top: 15vw;
     }
 
-    #sunriseTime,
-    #sunsetTime {
+    #zeitLinks,
+    #zeitRechts {
         font-size: 5vw;
     }
 
