@@ -153,26 +153,39 @@ img {
 }
 
 @media only screen and (max-width: 600px) {
+    
+    header {
+        margin-top: 10vw;
+    }
+
+    #menu {
+        margin-top: 10vw;
+    }
+
     h1 {
-        font-size: 40px;
+        font-size: 10vw;
     }
 
     #stadt_suche {
-        font-size: 20px;
+        font-size: 5vw;
+    }
+
+    #container {
+        padding-top: 15vw;
     }
 
     #sunriseTime,
     #sunsetTime {
-        font-size: 20px;
+        font-size: 5vw;
     }
 
     #currentTime {
-        font-size: 40px;
+        font-size: 8vw;
     }
 
     #sonnenbogen {
-        width: 500px;
-        height: 250px;
+        width: 50vw;
+        height: 25vw;
         border-radius: 250px 250px 0 0;
         border: 2px solid;
         border-bottom: none;
