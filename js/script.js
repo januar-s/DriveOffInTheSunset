@@ -5,13 +5,15 @@ let url = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=tod
 let formattedUrl = 'https://api.sunrise-sunset.org/json?lat=46.94798&lng=7.44743&date=today&tzid=Europe/Zurich&formatted=0';
 let tzid = 'Europe/Zurich';
 
+const sonnenbogen = document.getElementById('sonnenbogen');
+
+
 
 // Daten aus einer API holen
 async function fetchData(url, tzid) {
     try {
         let response = await fetch(url);
         let data = await response.json();
-        console.log(data);
 
         if (data.results) {
             document.querySelector('#zeitLinks').textContent = `${data.results.sunrise}`.slice(11, 16);
@@ -91,6 +93,27 @@ let staedte = [
     }
 ];
 
+// Media Queries
+async function mediaQueries() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        let offsetSonneX = 40;
+        let offsetSonneY = 85;
+    }
+    if (window.matchMedia('(max-width: 600px)').matches) {
+        let offsetSonneX = 40;
+        let offsetSonneY = 85;
+    }
+    if (window.matchMedia('(max-width: 600px)').matches) {
+        let offsetSonneX = 40;
+        let offsetSonneY = 85;
+    }
+    else {
+        let offsetSonneX = 40;
+        let offsetSonneY = 85;
+    }
+
+}
+
 // Änderungen der Stadt erkennen
 document.addEventListener('DOMContentLoaded', function () {
     const select = document.querySelector('#stadt_suche');
@@ -117,8 +140,7 @@ function updateCurrentTime() {
 
 // Winkel und Radius berechnen
 async function angleSunAndRadius(formattedUrl) {
-    const sonnenbogen = document.getElementById('sonnenbogen');
-    const radius = sonnenbogen.offsetWidth / 2; // Radius des Kreises berechnen
+    const radius = sonnenbogen.getBoundingClientRect().width / 2; // Radius des Kreises berechnen
 
     try {
         let response = await fetch(formattedUrl);
@@ -148,8 +170,27 @@ angleSunAndRadius(formattedUrl);
 // Funktion, um die Sonne zu bewegen
 function moveSonne(angleSun, radius) {
     const radians = angleSun * Math.PI / 180; // Umrechnung von Grad in Radian
-    const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians)) - 40;
-    const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians)) + 85;
+
+    // Anpassen der Verschiebung basierend auf der Bildschirmgröße
+    if (window.matchMedia("(max-width: 768px) and (min-width: 601px)").matches) {
+        shiftX = -30;
+        shiftY = 60;
+    } else if (window.matchMedia("(max-width: 600px) and (min-width: 451px)").matches) {
+        shiftX = -25;
+        shiftY = 50;
+    } else if (window.matchMedia("(max-width: 450px)").matches) {
+        shiftX = -25;
+        shiftY = 50;
+    }
+    else {
+        // Standardwerte für die Verschiebung
+        shiftX = -40;
+        shiftY = 85;
+    }
+
+    const x = (sonnenbogen.getBoundingClientRect().width / 2 + radius * Math.cos(radians)) + shiftX;
+    const y = (sonnenbogen.getBoundingClientRect().height / 2 + radius * Math.sin(radians)) + shiftY;
+
     sonne.style.left = `${x}px`;
     sonne.style.top = `${y}px`;
 } moveSonne(180);
@@ -158,8 +199,26 @@ function moveSonne(angleSun, radius) {
 function moveMond(angleSun, radius) {
     let angleMond = angleSun - 180
     const radians = angleMond * Math.PI / 180; // Umrechnung von Grad in Radian
-    const x = (sonnenbogen.offsetWidth / 2 + radius * Math.cos(radians)) - 40;
-    const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians)) + 85;
+
+        // Anpassen der Verschiebung basierend auf der Bildschirmgröße
+        if (window.matchMedia("(max-width: 768px) and (min-width: 601px)").matches) {
+            shiftX = -30;
+            shiftY = 60;
+        } else if (window.matchMedia("(max-width: 600px) and (min-width: 451px)").matches) {
+            shiftX = -25;
+            shiftY = 50;
+        } else if (window.matchMedia("(max-width: 450px)").matches) {
+            shiftX = -25;
+            shiftY = 50;
+        }
+        else {
+            // Standardwerte für die Verschiebung
+            shiftX = -40;
+            shiftY = 85;
+        }
+
+    const x = (sonnenbogen.getBoundingClientRect().width / 2 + radius * Math.cos(radians)) + shiftX;
+    const y = (sonnenbogen.getBoundingClientRect().height / 2 + radius * Math.sin(radians)) + shiftY;
     mond.style.left = `${x}px`;
     mond.style.top = `${y}px`;
 }
@@ -167,7 +226,7 @@ function moveMond(angleSun, radius) {
 // Veränderungen bei Sonnenauf/-untergang und Nacht
 async function visualChange(angleSun) {
     angleSun = angleSun + 180;
-   
+
     // Sonnenaufgang
     if (angleSun < 10 && angleSun > -10) {
         body.style.background = 'linear-gradient(180deg, #FFEB3B 0%, #F29C6B 50%, #BF5A75 100%)';
@@ -212,3 +271,4 @@ async function visualChange(angleSun) {
         }
     }
 };
+
