@@ -110,6 +110,15 @@ img {
     animation-iteration-count: infinite;
 }
 
+#mond {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    animation-name: lsd;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
 @keyframes lsd {
     0% {
         transform: rotate(0deg);
