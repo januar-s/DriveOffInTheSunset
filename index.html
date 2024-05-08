@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,48 +8,50 @@
     <link rel="stylesheet" href="https://use.typekit.net/arc4iuy.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
 </head>
 </head>
+
 <body>
     <header>
-<h1>Global Sun Tracker</h1>
+        <h1>Global Sun Tracker</h1>
     </header>
     <main>
-       <div id="menu"> 
-        <label for="stadt">Wähle deine Stadt:</label>
-         <select name="stadt" id="stadt_suche">
-            <option value="bern" class="options">Bern</option>
-            <option value="kairo" class="options">Kairo</option>
-            <option value="dubai" class="options">Dubai</option>
-            <option value="bangkok" class="options">Bangkok</option>
-            <option value="taipeh" class="options">Taipeh</option>
-            <option value="tokio" class="options">Tokio</option>
-            <option value="losangeles" class="options">Los Angeles</option>
-            <option value="miami" class="options">Miami</option>
-            <option value="rio" class="options">Rio</option>
-            <option value="marrakesch" class="options">Marrakesch</option>
-        </select>
-    </div>
-        <div id="container"> 
+        <div id="menu">
+            <label for="stadt">Wähle deine Stadt:</label>
+            <select name="stadt" id="stadt_suche">
+                <option value="bern" class="options">Bern</option>
+                <option value="kairo" class="options">Kairo</option>
+                <option value="dubai" class="options">Dubai</option>
+                <option value="bangkok" class="options">Bangkok</option>
+                <option value="taipeh" class="options">Taipeh</option>
+                <option value="tokio" class="options">Tokio</option>
+                <option value="losangeles" class="options">Los Angeles</option>
+                <option value="miami" class="options">Miami</option>
+                <option value="rio" class="options">Rio</option>
+                <option value="marrakesch" class="options">Marrakesch</option>
+            </select>
+        </div>
+        <div id="container">
             <p id="zeitLinks">...</p>
             <div id="sonnenbogen">
-            <div id="sonne"><img src="pictures/sun-svgrepo-com.svg"/> </div>
-            <div id="mond"><img src="pictures/moon-full-moon.svg"/></div>
+                <div id="sonne"><img src="pictures/sun-svgrepo-com.svg" /> </div>
+                <div id="mond"><img src="pictures/moon-full-moon.svg" /></div>
             </div>
             <p id="zeitRechts">...</p>
         </div>
-    </div>
+        </div>
         <div id="location"></div>
         <p id="currentTime">...</p>
-        
+
 
     </main>
     <footer>
 
     </footer>
-     <script src="js/script.js"></script>
-     
+    <script src="js/script.js"></script>
+
 </body>
 
 </html>

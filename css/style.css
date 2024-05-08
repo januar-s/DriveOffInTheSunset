@@ -46,7 +46,6 @@ h1 {
     font-variation-settings: "wght" 600;
     font-size: 80px;
     color: var(--font-color);
-    /* Weiße Schrift für bessere Lesbarkeit */
     justify-content: center;
 }
 
@@ -74,9 +73,8 @@ label[for="stadt"] {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    /* font-family: bd-orange-variable, sans-serif; */
     font-variation-settings: "wght" 600;
-    text-align-last: center; 
+    text-align-last: center;
 }
 
 img {
@@ -92,7 +90,7 @@ img {
     border-bottom: none;
     position: relative;
     border-color: var(--font-color);
-    
+
     /* border-width: 2px;
     border-top-style: solid;
     border-right-style: solid;
@@ -124,6 +122,7 @@ img {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -140,9 +139,7 @@ img {
 #zeitRechts {
     color: var(--font-color);
     width: 20vw;
-    /* Weiße Schrift für bessere Lesbarkeit */
     font-size: 32px;
-    /* Schriftgröße anpassen */
     padding-left: 5vw;
     padding-right: 5vw;
 }
@@ -153,13 +150,11 @@ img {
 
 #currentTime {
     color: var(--font-color);
-    /* Weiße Schrift für bessere Lesbarkeit */
     font-size: 64px;
-    /* Schriftgröße anpassen */
 }
 
 @media (max-width: 768px) and (min-width: 601px) {
-    
+
     header {
         margin-top: 10vw;
     }
@@ -217,8 +212,8 @@ img {
     }
 
     #mond {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     #zeitLinks,
@@ -266,8 +261,8 @@ img {
     }
 
     #mond {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
     }
 
     #zeitLinks,

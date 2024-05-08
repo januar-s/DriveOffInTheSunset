@@ -7,8 +7,6 @@ let tzid = 'Europe/Zurich';
 
 const sonnenbogen = document.getElementById('sonnenbogen');
 
-
-
 // Daten aus einer API holen
 async function fetchData(url, tzid) {
     try {
@@ -195,27 +193,27 @@ function moveSonne(angleSun, radius) {
     sonne.style.top = `${y}px`;
 } moveSonne(180);
 
-//Funktion, um den Mond zu bewegen
+// Funktion, um den Mond zu bewegen
 function moveMond(angleSun, radius) {
     let angleMond = angleSun - 180
     const radians = angleMond * Math.PI / 180; // Umrechnung von Grad in Radian
 
-        // Anpassen der Verschiebung basierend auf der Bildschirmgröße
-        if (window.matchMedia("(max-width: 768px) and (min-width: 601px)").matches) {
-            shiftX = -30;
-            shiftY = 60;
-        } else if (window.matchMedia("(max-width: 600px) and (min-width: 451px)").matches) {
-            shiftX = -25;
-            shiftY = 50;
-        } else if (window.matchMedia("(max-width: 450px)").matches) {
-            shiftX = -25;
-            shiftY = 50;
-        }
-        else {
-            // Standardwerte für die Verschiebung
-            shiftX = -40;
-            shiftY = 85;
-        }
+    // Anpassen der Verschiebung basierend auf der Bildschirmgröße
+    if (window.matchMedia("(max-width: 768px) and (min-width: 601px)").matches) {
+        shiftX = -30;
+        shiftY = 60;
+    } else if (window.matchMedia("(max-width: 600px) and (min-width: 451px)").matches) {
+        shiftX = -25;
+        shiftY = 50;
+    } else if (window.matchMedia("(max-width: 450px)").matches) {
+        shiftX = -25;
+        shiftY = 50;
+    }
+    else {
+        // Standardwerte für die Verschiebung
+        shiftX = -40;
+        shiftY = 85;
+    }
 
     const x = (sonnenbogen.getBoundingClientRect().width / 2 + radius * Math.cos(radians)) + shiftX;
     const y = (sonnenbogen.getBoundingClientRect().height / 2 + radius * Math.sin(radians)) + shiftY;
@@ -223,7 +221,7 @@ function moveMond(angleSun, radius) {
     mond.style.top = `${y}px`;
 }
 
-// Veränderungen bei Sonnenauf/-untergang und Nacht
+// Veränderungen Hintergrund bei Sonnenauf/-untergang, Tag und Nacht
 async function visualChange(angleSun) {
     angleSun = angleSun + 180;
 
@@ -271,4 +269,3 @@ async function visualChange(angleSun) {
         }
     }
 };
-
