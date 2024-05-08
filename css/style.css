@@ -11,6 +11,13 @@
     --alternative-color: var(--night-color);
 }
 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 body.night {
     --font-color: var(--night-color);
     --alternative-color: var(--day-color);
@@ -71,14 +78,6 @@ label[for="stadt"] {
     font-variation-settings: "wght" 600;
     text-align-last: center; 
   
-}
-
-option {
-    font-size: 20px;
-    color: var(--alternative-color);
-    font-family: bd-orange-variable, sans-serif;
-    font-variation-settings: "wght" 600;
-    align-items: center;
 }
 
 img {
@@ -142,4 +141,33 @@ img {
     /* Weiße Schrift für bessere Lesbarkeit */
     font-size: 64px;
     /* Schriftgröße anpassen */
+}
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    #stadt_suche {
+        font-size: 20px;
+    }
+
+    #sunriseTime,
+    #sunsetTime {
+        font-size: 20px;
+    }
+
+    #currentTime {
+        font-size: 40px;
+    }
+
+    #sonnenbogen {
+        width: 500px;
+        height: 250px;
+        border-radius: 250px 250px 0 0;
+        border: 2px solid;
+        border-bottom: none;
+        position: relative;
+        border-color: var(--font-color);
+    }
 }
