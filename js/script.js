@@ -166,7 +166,7 @@ function moveMond(angleSun, radius) {
 }
 
 // Veränderungen bei Sonnenauf/-untergang und Nacht
-function visualChange(angleSun) {
+async function visualChange(angleSun) {
     angleSun = angleSun + 180;
     if (angleSun < 10 && angleSun > -10) {
         body.style.background = 'linear-gradient(180deg, #FFEB3B 0%, #FFEB3B 50%, #FFC107 100%)';
@@ -192,5 +192,16 @@ function visualChange(angleSun) {
         body.classList.add('night');
         sonne.style.display = 'none';
         mond.style.display = 'block'
+        try {
+            let response = await fetch(formattedUrl);
+            let data = await response.json();
+            if (data.results) {
+                document.querySelector('#zeitRechts').textContent = `${data.results.sunrise}`.slice(11, 16);
+                document.querySelector('#zeitLinks').textContent = `${data.results.sunset}`.slice(11, 16);
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
     }
 };
