@@ -67,7 +67,7 @@ label[for="stadt"] {
 }
 
 #stadt_suche {
-    font-size: 25px;
+    font-size: 22px;
     color: var(--alternative-color);
     background-color: var(--font-color);
     width: 90%;
@@ -154,7 +154,7 @@ img {
 @media only screen and (max-width: 600px) {
     
     header {
-        margin-top: 10vw;
+        margin-top: 20vw;
     }
 
     #menu {
@@ -185,5 +185,21 @@ img {
     #sonnenbogen {
         width: 50vw;
         height: 25vw;
+    }
+}
+
+
+@media only screen and (max-width: 450px) {
+
+    header {
+        margin-top: 25vw;
+    }
+
+    #menu {
+        margin-top: 15vw;
+    }
+
+    #container {
+        padding-top: 20vw;
     }
 }

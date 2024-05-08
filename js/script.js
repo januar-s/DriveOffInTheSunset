@@ -162,30 +162,37 @@ function moveMond(angleSun, radius) {
     const y = (sonnenbogen.offsetHeight / 2 + radius * Math.sin(radians)) + 85;
     mond.style.left = `${x}px`;
     mond.style.top = `${y}px`;
-
 }
 
 // Veränderungen bei Sonnenauf/-untergang und Nacht
 async function visualChange(angleSun) {
     angleSun = angleSun + 180;
+   
+    // Sonnenaufgang
     if (angleSun < 10 && angleSun > -10) {
-        body.style.background = 'linear-gradient(180deg, #FFEB3B 0%, #FFEB3B 50%, #FFC107 100%)';
+        body.style.background = 'linear-gradient(180deg, #FFEB3B 0%, #F29C6B 50%, #BF5A75 100%)';
         body.classList = '';
         sonne.style.display = 'block';
         mond.style.display = 'none'
     }
+
+    // Sonnenuntergang
     else if (angleSun > 170 && angleSun < 190) {
         body.style.background = 'linear-gradient(180deg, #E8E172 0%, #FFA338 50%, #E83331 100%)';
         body.classList = '';
         sonne.style.display = 'block';
         mond.style.display = 'none'
     }
+
+    // Tag
     else if (angleSun > 10 && angleSun < 170) {
         body.style.background = 'linear-gradient(180deg, #0669BF 0%, #5EBAF2 50%, #99D9F2 100%)';
         body.classList = '';
         sonne.style.display = 'block';
         mond.style.display = 'none'
     }
+
+    // Nacht
     else {
         body.style.background = 'linear-gradient(180deg, #02070D 0%, #122A40 50%, #193B59 100%)';
         body.classList = '';
