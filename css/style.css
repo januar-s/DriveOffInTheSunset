@@ -15,7 +15,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body.night {
@@ -46,7 +46,6 @@ h1 {
     font-variation-settings: "wght" 600;
     font-size: 80px;
     color: var(--font-color);
-    /* Weiße Schrift für bessere Lesbarkeit */
     justify-content: center;
 }
 
@@ -74,9 +73,8 @@ label[for="stadt"] {
     padding: 10px;
     border-radius: 5px;
     box-sizing: border-box;
-    /* font-family: bd-orange-variable, sans-serif; */
     font-variation-settings: "wght" 600;
-    text-align-last: center; 
+    text-align-last: center;
 }
 
 img {
@@ -92,7 +90,7 @@ img {
     border-bottom: none;
     position: relative;
     border-color: var(--font-color);
-    
+
     /* border-width: 2px;
     border-top-style: solid;
     border-right-style: solid;
@@ -107,6 +105,7 @@ img {
     animation-name: lsd;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+    display: none;
 }
 
 #mond {
@@ -116,12 +115,14 @@ img {
     animation-name: lsd;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+    display: none;
 }
 
 @keyframes lsd {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -137,22 +138,54 @@ img {
 #zeitLinks,
 #zeitRechts {
     color: var(--font-color);
-    /* Weiße Schrift für bessere Lesbarkeit */
+    width: 20vw;
     font-size: 32px;
-    /* Schriftgröße anpassen */
     padding-left: 5vw;
     padding-right: 5vw;
 }
 
-#currentTime {
-    color: var(--font-color);
-    /* Weiße Schrift für bessere Lesbarkeit */
-    font-size: 64px;
-    /* Schriftgröße anpassen */
+#zeitLinks {
+    text-align: right;
 }
 
-@media only screen and (max-width: 600px) {
-    
+#currentTime {
+    color: var(--font-color);
+    font-size: 64px;
+}
+
+@media (max-width: 768px) and (min-width: 601px) {
+
+    header {
+        margin-top: 10vw;
+    }
+
+    #menu {
+        margin-top: 5vw;
+    }
+
+    #container {
+        padding-top: 10vw;
+    }
+
+    #sonne {
+        width: 60px;
+        height: 60px;
+    }
+
+    #mond {
+        width: 60px;
+        height: 60px;
+    }
+
+    #sonnenbogen {
+        width: 350px;
+        height: 175px;
+        border-radius: 300px 300px 0 0;
+    }
+}
+
+@media (max-width: 600px) and (min-width: 451px) {
+
     header {
         margin-top: 20vw;
     }
@@ -173,6 +206,16 @@ img {
         padding-top: 15vw;
     }
 
+    #sonne {
+        width: 50px;
+        height: 50px;
+    }
+
+    #mond {
+        width: 50px;
+        height: 50px;
+    }
+
     #zeitLinks,
     #zeitRechts {
         font-size: 5vw;
@@ -183,13 +226,14 @@ img {
     }
 
     #sonnenbogen {
-        width: 50vw;
-        height: 25vw;
+        width: 300px;
+        height: 150px;
+        border-radius: 300px 300px 0 0;
     }
 }
 
 
-@media only screen and (max-width: 450px) {
+@media (max-width: 450px) {
 
     header {
         margin-top: 25vw;
@@ -199,7 +243,40 @@ img {
         margin-top: 15vw;
     }
 
+    h1 {
+        font-size: 10vw;
+    }
+
+    #stadt_suche {
+        font-size: 5vw;
+    }
+
     #container {
         padding-top: 20vw;
+    }
+
+    #sonne {
+        width: 50px;
+        height: 50px;
+    }
+
+    #mond {
+        width: 50px;
+        height: 50px;
+    }
+
+    #zeitLinks,
+    #zeitRechts {
+        font-size: 5vw;
+    }
+
+    #currentTime {
+        font-size: 15vw;
+    }
+
+    #sonnenbogen {
+        width: 300px;
+        height: 150px;
+        border-radius: 300px 300px 0 0;
     }
 }
