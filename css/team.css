@@ -11,16 +11,20 @@
     --alternative-color: var(--night-color);
 }
 
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 body {
-    background: linear-gradient(180deg, #0669BF 0%, #5EBAF2 50%, #99D9F2 100%)   ;
+    background: linear-gradient(180deg, #0669BF 0%, #5EBAF2 50%, #99D9F2 100%);
 }
 
 p {
@@ -32,6 +36,11 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+main,
+#team {
+    width: 80vw;
 }
 
 header {
@@ -58,7 +67,7 @@ h2 {
 
 ul {
     font-family: darkmode-on, sans-serif;
-
+    padding-left: 15px;
 }
 
 img {
@@ -71,17 +80,87 @@ img {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    margin-top: 5vw;
-    width: 80vw;
-    justify-content: space-around;
+    margin-top: 2vw;
+    justify-content: space-between;
 }
 
-.personen {
-    width: 15vw;
+.personen,
+.bilder {
+    width: 20vw;
 }
 
 .bilder {
-    width: 15vw;
-    height: 22.5vw;
+    height: 30vw;
+    margin-bottom: 1vw;
+}
 
+#zusammen {
+    margin-top: 5vw;
+    align-self: self-start;
+}
+
+button {
+    font-size: 30px;
+    color: var(--alternative-color);
+    background-color: var(--font-color);
+    padding: 10px;
+    border-radius: 5px;
+    text-align-last: center;
+    margin-top: 10vw;
+    margin-bottom: 10vw;
+}
+
+@media (max-width: 768px) and (min-width: 601px) {
+
+    main,
+    #team {
+        width: 90vw;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    ul {
+        padding-left: 15px;
+        font-size: 15px;
+    }
+
+    .personen,
+    .bilder {
+        width: 25vw;
+    }
+
+    .bilder {
+        height: 37.5vw;
+    }
+}
+
+@media (max-width: 600px) {
+    #team {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .personen {
+        margin-bottom: 5vw;
+    }
+
+    .personen,
+    .bilder {
+        width: 50vw;
+    }
+
+    .bilder {
+        height: 75vw;
+    }
+
+}
+
+@media (max-width: 450px) {
+    button {
+        font-size: 20px;
+        padding: 10px;
+        border-radius: 5px;
+    }
 }

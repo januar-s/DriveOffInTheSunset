@@ -11,13 +11,12 @@
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
 </head>
-</head>
 
 <body>
-    <header>
-        <h1>Global Sun Tracker</h1>
-    </header>
     <main>
+        <div id="title">
+            <h1>Global Sun Tracker</h1>
+        </div>
         <div id="menu">
             <label for="stadt">Wähle deine Stadt:</label>
             <select name="stadt" id="stadt_suche">
@@ -44,11 +43,13 @@
         </div>
         <div id="location"></div>
         <p id="currentTime">...</p>
-
-        <a href="team.html">Team</a>
-
     </main>
     <footer>
+        <div id="team">
+            <a href="team.html">
+                <button type="button" role="link" id="button">Team</button>
+            </a>
+        </div>
 
     </footer>
     <script src="js/script.js"></script>
