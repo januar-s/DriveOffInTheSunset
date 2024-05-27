@@ -11,8 +11,9 @@
     --alternative-color: var(--night-color);
 }
 
-body {
+html, body {
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -31,14 +32,13 @@ p {
 main {
     display: flex;
     align-items: center;
-    height: 100vh;
     flex-direction: column;
 }
 
 header {
     display: flex;
     justify-content: center;
-    margin-top: 3vw;
+    padding-top: 3vw;
 }
 
 h1 {
@@ -236,7 +236,7 @@ img {
 @media (max-width: 450px) {
 
     header {
-        margin-top: 25vw;
+        margin-top: 10vw;
     }
 
     #menu {
@@ -252,7 +252,15 @@ img {
     }
 
     #container {
+        width: 300px;
         padding-top: 20vw;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-bottom: 10vw;
+    }
+
+    #sonnenbogen {
+        order: -1;
     }
 
     #sonne {
@@ -268,6 +276,17 @@ img {
     #zeitLinks,
     #zeitRechts {
         font-size: 5vw;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 3vw;
+    }
+
+    #zeitLinks {
+        text-align: left;
+    }
+
+    #zeitRechts {
+        text-align: right;
     }
 
     #currentTime {
