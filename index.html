@@ -17,9 +17,9 @@
         <div id="title">
             <h1>Global Sun Tracker</h1>
         </div>
-        <div id="menu">
+        <div id="dropdown">
             <label for="stadt">Wähle deine Stadt:</label>
-            <select name="stadt" id="stadt_suche">
+            <select name="stadt" id="stadtSuche">
                 <option value="bern" class="options">Bern</option>
                 <option value="kairo" class="options">Kairo</option>
                 <option value="dubai" class="options">Dubai</option>
@@ -35,25 +35,22 @@
         <div id="container">
             <p id="zeitLinks">...</p>
             <div id="sonnenbogen">
-                <div id="sonne"><img src="pictures/sun-svgrepo-com.svg" /> </div>
-                <div id="mond"><img src="pictures/moon-full-moon.svg" /></div>
+                <div id="sonne"><img src="pictures/sun-svgrepo-com.svg" alt="Sonne"></div>
+                <div id="mond"><img src="pictures/moon-full-moon.svg" alt="Mond"></div>
             </div>
             <p id="zeitRechts">...</p>
-        </div>
         </div>
         <div id="location"></div>
         <p id="currentTime">...</p>
     </main>
     <footer>
-        <div id="team">
+        <div>
             <a href="team.html">
                 <button type="button" role="link" id="button">Team</button>
             </a>
         </div>
-
     </footer>
     <script src="js/script.js"></script>
-
 </body>
 
 </html>

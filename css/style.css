@@ -1,6 +1,5 @@
 * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -15,8 +14,6 @@ html,
 body {
     height: 100%;
     width: 100%;
-    margin: 0;
-    padding: 0;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -26,11 +23,6 @@ body {
 body.night {
     --font-color: var(--night-color);
     --alternative-color: var(--day-color);
-}
-
-p {
-    font-family: bd-orange-variable, sans-serif;
-    font-variation-settings: "wght" 800;
 }
 
 main {
@@ -53,7 +45,12 @@ h1 {
     justify-content: center;
 }
 
-#menu {
+p {
+    font-family: bd-orange-variable, sans-serif;
+    font-variation-settings: "wght" 800;
+}
+
+#dropdown {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +66,7 @@ label[for="stadt"] {
     font-variation-settings: "wght" 600;
 }
 
-#stadt_suche {
+#stadtSuche {
     font-size: 22px;
     color: var(--alternative-color);
     background-color: var(--font-color);
@@ -81,60 +78,8 @@ label[for="stadt"] {
     text-align-last: center;
 }
 
-img {
-    width: 100%;
-    height: 100%;
-}
-
-#sonnenbogen {
-    width: 500px;
-    height: 250px;
-    border-radius: 250px 250px 0 0;
-    border: 2px solid;
-    border-bottom: none;
-    position: relative;
-    border-color: var(--font-color);
-
-    /* border-width: 2px;
-    border-top-style: solid;
-    border-right-style: solid;
-    border-left-style: solid;
-    border-bottom-style: none; */
-}
-
-#sonne {
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    animation-name: lsd;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    display: none;
-}
-
-#mond {
-    width: 80px;
-    height: 80px;
-    position: absolute;
-    animation-name: lsd;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    display: none;
-}
-
-@keyframes lsd {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 #container {
     display: flex;
-    flex-direction: row;
     align-items: end;
     padding-top: 7vw;
 }
@@ -152,14 +97,52 @@ img {
     text-align: right;
 }
 
+#sonnenbogen {
+    width: 500px;
+    height: 250px;
+    border-radius: 250px 250px 0 0;
+    border: 2px solid;
+    border-bottom: none;
+    position: relative;
+    border-color: var(--font-color);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+#sonne {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+#mond {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 #currentTime {
     color: var(--font-color);
     font-size: 64px;
-}
-
-#team {
-    align-self: self-end;
-
 }
 
 footer {
@@ -182,7 +165,7 @@ button {
         margin-top: 10vw;
     }
 
-    #menu {
+    #dropdown {
         margin-top: 5vw;
     }
 
@@ -213,7 +196,7 @@ button {
         margin-top: 20vw;
     }
 
-    #menu {
+    #dropdown {
         margin-top: 10vw;
     }
 
@@ -221,7 +204,7 @@ button {
         font-size: 10vw;
     }
 
-    #stadt_suche {
+    #stadtSuche {
         font-size: 5vw;
     }
 
@@ -255,14 +238,13 @@ button {
     }
 }
 
-
 @media (max-width: 450px) {
 
     #title {
         margin-top: 10vw;
     }
 
-    #menu {
+    #dropdown {
         margin-top: 15vw;
     }
 
@@ -270,7 +252,7 @@ button {
         font-size: 10vw;
     }
 
-    #stadt_suche {
+    #stadtSuche {
         font-size: 5vw;
     }
 

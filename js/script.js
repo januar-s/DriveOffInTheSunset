@@ -114,7 +114,7 @@ async function mediaQueries() {
 
 // Änderungen der Stadt erkennen
 document.addEventListener('DOMContentLoaded', function () {
-    const select = document.querySelector('#stadt_suche');
+    const select = document.querySelector('#stadtSuche');
 
     select.addEventListener('change', async function () {
         let stadt = staedte.find(stadt => stadt.name === select.value);
@@ -131,7 +131,7 @@ setInterval(updateCurrentTime, 1000);
 
 // Aktuelle Zeit am Ort darstellen
 function updateCurrentTime() {
-    const select = document.querySelector('#stadt_suche');
+    const select = document.querySelector('#stadtSuche');
     const stadt = staedte.find(stadt => stadt.name === select.value);
     document.querySelector('#currentTime').textContent = moment().tz(`${stadt.tzid}`).format('HH:mm');
 }
