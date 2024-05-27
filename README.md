@@ -2,7 +2,7 @@
 
 Kurzbeschreibung Projekt: 
 
-Unser Projekt «Global Sun Tracker» bietet Informationen zum Sonnenstand. Es zeigt, wann die Sonne auf- und untergeht und die aktuelle Uhrzeit. Eine Illustration verdeutlicht die aktuelle Position der Sonne. Das Tool ist auf verschiedene Städte und Zeitzonen abgestimmt, die man in einem Dropdown-Menü auswählen kann, darunter Bern, Taipeh und Los Angeles. Wir stellen aus jeder Zeitzone mindestens eine Stadt bereit. Der Bildschirmhintergrund ändert sich je nach Tageszeit: nachts dunkel, tagsüber blau und bei Sonnenauf- und -untergang gelblich-orange. Bei Nacht wird ein Mond angezeigt. 
+Unser Projekt «Global Sun Tracker» bietet Informationen zum Sonnenstand. Es zeigt, wann die Sonne auf- und untergeht und die aktuelle Uhrzeit vor Ort. Eine Illustration verdeutlicht die aktuelle Position der Sonne. Das Tool ist auf verschiedene Städte und Zeitzonen abgestimmt, die man in einem Dropdown-Menü auswählen kann, darunter Bern, Taipeh und Los Angeles. Wir stellen aus vielen Zeitzonen eine Stadt bereit. Der Bildschirmhintergrund ändert sich je nach Tageszeit: nachts dunkel, tagsüber blau und bei Sonnenauf- und -untergang gelblich-orange. Bei Nacht wird ein Mond anstelle der Sonne angezeigt.
 
 Learnings und Schwierigkeiten:
 
