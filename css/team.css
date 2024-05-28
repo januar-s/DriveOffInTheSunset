@@ -44,7 +44,6 @@ main,
 }
 
 header {
-    display: flex;
     justify-content: center;
     padding-top: 3vw;
 }
@@ -54,7 +53,6 @@ h1 {
     font-variation-settings: "wght" 600;
     font-size: 80px;
     color: var(--font-color);
-    justify-content: center;
 }
 
 h2 {
@@ -62,7 +60,6 @@ h2 {
     font-variation-settings: "wght" 600;
     font-size: 40px;
     color: var(--font-color);
-    justify-content: center;
 }
 
 ul {
@@ -78,8 +75,6 @@ img {
 
 #team {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     margin-top: 2vw;
     justify-content: space-between;
 }
@@ -105,7 +100,6 @@ button {
     background-color: var(--font-color);
     padding: 10px;
     border-radius: 5px;
-    text-align-last: center;
     margin-top: 10vw;
     margin-bottom: 10vw;
 }
